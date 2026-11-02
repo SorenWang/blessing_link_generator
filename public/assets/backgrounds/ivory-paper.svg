@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2200" viewBox="0 0 1600 2200">
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8f3e9"/>
+      <stop offset=".52" stop-color="#eee3d1"/>
+      <stop offset="1" stop-color="#f7f0e4"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".18" cy=".15" r=".9">
+      <stop offset="0" stop-color="#fffaf0" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#e6d6be" stop-opacity=".08"/>
+    </radialGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="4" seed="12" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="table" tableValues="0 .075"/></feComponentTransfer>
+    </filter>
+    <pattern id="fibers" width="180" height="26" patternUnits="userSpaceOnUse">
+      <path d="M0 8h70M94 17h58M12 24h104" stroke="#9a7f5f" stroke-opacity=".09" stroke-width=".7"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="2200" fill="url(#paper)"/>
+  <rect width="1600" height="2200" fill="url(#glow)"/>
+  <rect width="1600" height="2200" fill="url(#fibers)"/>
+  <rect width="1600" height="2200" filter="url(#grain)" opacity=".55"/>
+  <circle cx="1290" cy="380" r="310" fill="none" stroke="#9b4d3b" stroke-opacity=".06" stroke-width="2"/>
+  <circle cx="1290" cy="380" r="250" fill="none" stroke="#9b4d3b" stroke-opacity=".045" stroke-width="1"/>
+</svg>

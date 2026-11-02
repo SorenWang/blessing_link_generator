@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f1eadc">
+  <meta name="robots" content="noindex,nofollow">
+  <title>祝语工坊 · Blessing Link</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/admin.css">
+</head>
+<body>
+  <div class="auth-shell" id="login-view">
+    <section class="auth-poster" aria-label="祝语工坊">
+      <div class="poster-grid" aria-hidden="true"></div>
+      <div class="poster-topline">
+        <span class="brand-mark">祝</span>
+        <span>BLESSING LINK / STUDIO</span>
+      </div>
+      <div class="poster-copy">
+        <p class="eyebrow">A SMALL STUDIO FOR BIG FEELINGS</p>
+        <h1>有些心意，<br><em>值得被打开。</em></h1>
+        <p>为一个名字，选一段文字、一张照片与一种情绪，<br>把祝福做成可以被珍藏的链接。</p>
+      </div>
+      <div class="poster-note">
+        <span>01</span>
+        <p>写下祝福，选择版式，<br>剩下的交给这一间小小工坊。</p>
+      </div>
+      <div class="poster-seal" aria-hidden="true">信</div>
+    </section>
+
+    <section class="auth-panel">
+      <div class="auth-card">
+        <div class="auth-card-head">
+          <span class="mini-label">PRIVATE ACCESS</span>
+          <h2>回到工坊</h2>
+          <p>输入后台密码，开始整理今天的祝福。</p>
+        </div>
+        <form id="login-form" class="auth-form">
+          <label for="password">后台密码</label>
+          <div class="password-row">
+            <input id="password" name="password" type="password" autocomplete="current-password" placeholder="输入密码" required>
+            <button type="submit" class="button button-ink">进入工坊 <span aria-hidden="true">↗</span></button>
+          </div>
+          <p class="form-message" id="login-message" role="status"></p>
+          <p class="password-hint" id="password-hint" hidden>本地演示密码是 <code>blessing-admin</code>。部署前请在环境变量中设置 <code>ADMIN_PASSWORD</code>。</p>
+        </form>
+        <div class="auth-foot">
+          <span>祝福链接生成系统</span>
+          <span>v0.1</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="studio" id="studio" hidden>
+    <aside class="studio-rail">
+      <div class="rail-brand" aria-label="祝语工坊">
+        <span class="brand-mark">祝</span>
+        <span class="rail-brand-text">祝语<br>工坊</span>
+      </div>
+      <nav class="rail-nav" aria-label="主导航">
+        <button type="button" class="rail-nav-item is-active" data-view-target="library">
+          <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6.5h16M4 12h16M4 17.5h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="19" cy="17.5" r="1.5" fill="currentColor"/></svg></span>
+          <span>祝福库</span>
+        </button>
+        <button type="button" class="rail-nav-item" data-view-target="batch">
+          <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4.5h14v15H5zM8 8h8M8 11.5h8M8 15h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>批量生成</span>
+        </button>
+        <button type="button" class="rail-nav-item" data-view-target="assets">
+          <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5 20 8v8l-8 4.5L4 16V8l8-4.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="m4.5 8.2 7.5 4.3 7.5-4.3M12 12.5v8" stroke="currentColor" stroke-width="1.5"/></svg></span>
+          <span>素材指南</span>
+        </button>
+      </nav>
+      <div class="rail-bottom">
+        <button type="button" class="rail-logout" id="logout-button" title="退出登录">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 5H5v14h5M14 8l4 4-4 4M18 12H9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>退出</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      <header class="workspace-top">
+        <div class="top-context">
+          <span class="top-mark">BL</span>
+          <div><span class="eyebrow">BLESSING LINK</span><strong>祝福链接工作室</strong></div>
+        </div>
+        <div class="top-actions">
+          <span class="today-label" id="today-label"></span>
+          <button type="button" class="icon-button only-mobile" id="mobile-new-button" aria-label="新建祝福">+</button>
+          <button type="button" class="button button-ink top-new-button" id="new-page-button">新建祝福 <span aria-hidden="true">↗</span></button>
+        </div>
+      </header>
+
+      <section class="page-view" id="library-view" data-view="library">
+        <div class="library-hero">
+          <div class="hero-copy">
+            <p class="eyebrow">YOUR LITTLE ARCHIVE OF WARMTH</p>
+            <h1>把一句祝福，<br>做成一份 <em>可被打开的礼物。</em></h1>
+            <p class="hero-intro">每一个名字都值得一个不敷衍的抵达。选择模板、写下想说的话，然后把链接交给它该去的人。</p>
+            <div class="hero-actions">
+              <button type="button" class="button button-ink" id="hero-new-button">新建一封祝福 <span aria-hidden="true">↗</span></button>
+              <button type="button" class="text-link" data-view-target="batch">从名单批量生成 <span aria-hidden="true">→</span></button>
+            </div>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="hero-orbit orbit-one"></div>
+            <div class="hero-orbit orbit-two"></div>
+            <div class="hero-stamp">祝</div>
+            <span class="hero-caption">MADE WITH<br>ATTENTION</span>
+          </div>
+        </div>
+
+        <section class="metric-ledger" aria-label="数据概览">
+          <div class="metric-item"><span class="metric-label">全部祝福</span><strong id="metric-total">—</strong><span class="metric-note">累计创建</span></div>
+          <div class="metric-item"><span class="metric-label">已经发出</span><strong id="metric-published">—</strong><span class="metric-note">公开可访问</span></div>
+          <div class="metric-item"><span class="metric-label">候场中</span><strong id="metric-drafts">—</strong><span class="metric-note">等待确认</span></div>
+          <div class="metric-item"><span class="metric-label">被打开</span><strong id="metric-views">—</strong><span class="metric-note">累计访问</span></div>
+        </section>
+
+        <section class="collection-section">
+          <div class="section-heading">
+            <div><p class="eyebrow">COLLECTION / 01</p><h2>祝福档案</h2></div>
+            <div class="collection-tools">
+              <label class="search-field"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.3" stroke="currentColor" stroke-width="1.5"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><input id="page-search" type="search" placeholder="搜索姓名、标题或链接"></label>
+              <select id="page-filter" class="select-control" aria-label="筛选状态"><option value="all">全部状态</option><option value="published">已发布</option><option value="draft">草稿</option></select>
+            </div>
+          </div>
+
+          <div class="bulk-bar" id="bulk-bar" hidden>
+            <span><strong id="bulk-count">0</strong> 封已选择</span>
+            <button type="button" class="small-action" data-bulk-action="publish">发布</button>
+            <button type="button" class="small-action" data-bulk-action="unpublish">转为草稿</button>
+            <button type="button" class="small-action danger" data-bulk-action="delete">删除</button>
+          </div>
+
+          <div class="ledger" id="page-ledger">
+            <div class="ledger-head" aria-hidden="true">
+              <span class="check-cell"><input type="checkbox" id="select-all" aria-label="全选祝福"></span>
+              <span>祝福对象</span><span>场合 / 主题</span><span>状态</span><span>访问</span><span>更新于</span><span class="align-right">操作</span>
+            </div>
+            <div id="page-list" class="page-list"></div>
+          </div>
+        </section>
+      </section>
+
+      <section class="page-view batch-view" id="batch-view" data-view="batch" hidden>
+        <div class="page-heading">
+          <p class="eyebrow">BULK STUDIO / 02</p>
+          <h1>一次生成，<br><em>一整批心意。</em></h1>
+          <p>粘贴名单或导入 CSV，系统会按姓名、场合和主题批量建立祝福页。你可以先全部生成草稿，也可以直接发布并拿到链接。</p>
+        </div>
+
+        <div class="batch-grid">
+          <article class="paper-card batch-input-card">
+            <div class="card-kicker"><span>01</span><span>写入名单</span></div>
+            <h2>粘贴 CSV 数据</h2>
+            <p class="card-description">第一行是表头。支持 <code>recipient, sender, occasion, theme, title, message</code>，也支持中文表头。</p>
+            <textarea id="batch-text" class="batch-textarea" spellcheck="false" placeholder="recipient,sender,occasion,theme,title,message&#10;林晚,阿宁,birthday,ivory,给林晚的生日来信,愿你新的一岁依然自由明亮"></textarea>
+            <div class="batch-input-actions">
+              <label class="button button-quiet file-button">导入 CSV<input id="batch-file" type="file" accept=".csv,text/csv" hidden></label>
+              <button type="button" class="text-link" id="fill-sample">填入示例</button>
+              <button type="button" class="text-link" id="parse-batch">解析名单 <span aria-hidden="true">→</span></button>
+            </div>
+            <div class="format-hint"><span class="format-hint-label">可用场合</span><span>birthday · anniversary · festival · graduation · wedding · newborn · gratitude · encouragement · custom</span></div>
+            <div class="format-hint"><span class="format-hint-label">可用主题</span><span>ivory · night · celadon · rose · amber</span></div>
+          </article>
+
+          <article class="paper-card batch-preview-card">
+            <div class="card-kicker"><span>02</span><span>确认内容</span></div>
+            <div class="preview-card-head">
+              <div><h2>名单预览</h2><p class="card-description" id="batch-preview-summary">还没有解析名单。</p></div>
+              <label class="switch-line compact-switch"><input type="checkbox" id="batch-publish"><span class="switch-ui"></span><span>生成后立即发布</span></label>
+            </div>
+            <div id="batch-preview" class="batch-preview-empty"><span class="empty-glyph">见</span><p>粘贴名单后点击“解析名单”<br>这里会显示将要生成的祝福。</p></div>
+            <button type="button" class="button button-ink full-button" id="generate-batch" disabled>生成祝福链接 <span aria-hidden="true">↗</span></button>
+          </article>
+        </div>
+
+        <section class="batch-results paper-card" id="batch-results" hidden>
+          <div class="card-kicker"><span>03</span><span>链接已就绪</span></div>
+          <div class="batch-results-head">
+            <div><h2 id="batch-result-title">共生成 0 条祝福链接</h2><p class="card-description">链接只在发布后可以打开。草稿可在祝福库中继续编辑。</p></div>
+            <button type="button" class="button button-quiet" id="copy-all-links">复制全部链接</button>
+          </div>
+          <div id="batch-results-list" class="result-list"></div>
+        </section>
+      </section>
+
+      <section class="page-view assets-view" id="assets-view" data-view="assets" hidden>
+        <div class="page-heading">
+          <p class="eyebrow">ASSET LIBRARY / 03</p>
+          <h1>把风格，<br><em>换成你的。</em></h1>
+          <p>当前主题已经自带可直接使用的背景。后续替换同名文件，就能把整套系统变成你自己的视觉资产库。</p>
+        </div>
+
+        <div class="theme-asset-grid" id="theme-asset-grid"></div>
+
+        <div class="asset-notes-grid">
+          <article class="paper-card asset-note">
+            <span class="note-number">A</span><h2>背景图片</h2>
+            <p>将图片放到 <code>public/assets/backgrounds/</code>，按当前主题文件名替换。</p>
+            <div class="path-list"><code>ivory-paper.svg</code><code>night-sky.svg</code><code>celadon-mist.svg</code><code>rose-paper.svg</code><code>amber-glow.svg</code></div>
+          </article>
+          <article class="paper-card asset-note">
+            <span class="note-number">B</span><h2>品牌字体</h2>
+            <p>将字体放到 <code>public/assets/fonts/</code>，应用会自动优先读取。</p>
+            <div class="path-list"><code>blessing-display.woff2</code><code>blessing-body.woff2</code></div>
+            <p class="micro-note">没有字体文件时会自动回退到系统中文字体。</p>
+          </article>
+          <article class="paper-card asset-note">
+            <span class="note-number">C</span><h2>照片与音频</h2>
+            <p>编辑器内上传的素材会保存在本地 <code>data/uploads/</code>。公共素材可放入 <code>public/assets/images/</code> 或 <code>public/assets/audio/</code>。</p>
+            <p class="micro-note">单个上传文件上限 12MB，建议照片预先压缩到 2MB 以内。</p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="editor-shell" id="editor-view" hidden>
+    <header class="editor-topbar">
+      <button type="button" class="editor-close" id="close-editor" aria-label="关闭编辑器">×</button>
+      <div class="editor-title"><span class="eyebrow" id="editor-kicker">NEW BLESSING</span><h2 id="editor-heading">新建一封祝福</h2></div>
+      <div class="editor-actions">
+        <span class="status-pill" id="editor-status">草稿</span>
+        <button type="button" class="button button-quiet" id="save-page">保存</button>
+        <button type="button" class="button button-ink" id="publish-page">保存并发布 <span aria-hidden="true">↗</span></button>
+      </div>
+    </header>
+
+    <div class="editor-layout">
+      <div class="editor-form-wrap">
+        <form id="page-form" class="editor-form">
+          <section class="form-section">
+            <div class="form-section-head"><span>01</span><div><h3>基本信息</h3><p>让这封信找到它该去的人。</p></div></div>
+            <div class="field-grid two-col">
+              <label class="field-label">收件人姓名<input id="field-recipient" name="recipient" type="text" maxlength="60" placeholder="例如：林晚" required></label>
+              <label class="field-label">发送人署名<input id="field-sender" name="sender" type="text" maxlength="60" placeholder="例如：阿宁"></label>
+              <label class="field-label">祝福场合<select id="field-occasion" name="occasion"></select></label>
+              <label class="field-label">纪念日期<input id="field-event-date" name="eventDate" type="date"></label>
+            </div>
+            <label class="field-label">页面标题<input id="field-title" name="title" type="text" maxlength="100" placeholder="系统会根据场合自动生成"></label>
+          </section>
+
+          <section class="form-section">
+            <div class="form-section-head"><span>02</span><div><h3>主题气质</h3><p>先选一种情绪，再让内容慢慢长出来。</p></div></div>
+            <div class="theme-picker" id="theme-picker"></div>
+          </section>
+
+          <section class="form-section">
+            <div class="form-section-head"><span>03</span><div><h3>写下祝福</h3><p>支持换行。建议 2–4 段，读起来更像一封真正的信。</p></div></div>
+            <label class="field-label">正文<textarea id="field-message" name="message" rows="8" maxlength="4000"></textarea></label>
+            <label class="field-label">结尾寄语<input id="field-closing" name="closing" type="text" maxlength="300"></label>
+          </section>
+
+          <section class="form-section">
+            <div class="form-section-head"><span>04</span><div><h3>照片与组件</h3><p>让页面多一点属于你们自己的细节。</p></div></div>
+            <div class="component-toggles" id="component-toggles"></div>
+            <div class="gallery-builder">
+              <div class="builder-head"><div><strong>照片墙</strong><span>最多 24 张</span></div><label class="button button-quiet file-button">上传照片<input id="gallery-upload" type="file" accept="image/*" multiple hidden></label></div>
+              <div id="gallery-list" class="gallery-list"></div>
+            </div>
+            <div class="gallery-builder">
+              <div class="builder-head"><div><strong>时间线</strong><span>可选，最多 12 条</span></div><button type="button" class="small-action" id="add-milestone">添加一条</button></div>
+              <div id="milestone-list" class="milestone-list"></div>
+            </div>
+          </section>
+
+          <section class="form-section">
+            <div class="form-section-head"><span>05</span><div><h3>声音与有效期</h3><p>音乐不会自动播放，收件人点击后才会响起。</p></div></div>
+            <div class="field-grid two-col">
+              <label class="field-label">背景音乐地址<input id="field-audio-url" name="audioUrl" type="text" placeholder="/assets/audio/your-song.mp3"></label>
+              <label class="field-label">或上传音频<span class="upload-inline"><input id="audio-upload" type="file" accept="audio/*"><span id="audio-upload-status">未选择文件</span></span></label>
+              <label class="field-label">链接有效期<input id="field-expires-at" name="expiresAt" type="date"><span class="field-note">留空表示长期有效</span></label>
+              <label class="field-label">访问密码<input type="text" placeholder="v0.1 暂未开放" disabled></label>
+            </div>
+          </section>
+        </form>
+      </div>
+
+      <aside class="preview-studio">
+        <div class="preview-head"><div><span class="eyebrow">LIVE PREVIEW</span><h3>手机端预览</h3></div><button type="button" class="small-action" id="refresh-preview">保存并刷新</button></div>
+        <div class="phone-frame">
+          <div class="phone-speaker" aria-hidden="true"></div>
+          <div class="phone-screen">
+            <iframe id="preview-frame" title="祝福页预览"></iframe>
+            <div class="preview-placeholder" id="preview-placeholder"><span>先保存这封祝福<br>才能打开真实预览。</span></div>
+          </div>
+        </div>
+        <div class="share-panel" id="share-panel" hidden>
+          <span class="eyebrow">PUBLIC LINK</span>
+          <div class="share-link-row"><input id="share-link" type="text" readonly aria-label="公开祝福链接"><button type="button" class="small-action" id="copy-share-link">复制</button></div>
+          <a id="open-share-link" class="text-link" href="#" target="_blank" rel="noopener">在新窗口打开 <span aria-hidden="true">↗</span></a>
+        </div>
+        <p class="preview-note"><span></span> 发布后，这个链接会按你设置的地址对外打开。</p>
+      </aside>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="/admin.js?v=dev1"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

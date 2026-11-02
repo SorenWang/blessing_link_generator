@@ -1,0 +1,16 @@
+# 依赖
+node_modules/
+
+# 本地配置
+.env
+
+# 业务数据与上传内容
+data/pages.json
+data/pages.json.tmp
+data/uploads/*
+!data/uploads/.gitkeep
+
+# 运行产物
+*.log
+.DS_Store
+Thumbs.db

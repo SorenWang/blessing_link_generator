@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2200" viewBox="0 0 1600 2200">
+  <defs>
+    <linearGradient id="amber" x1="0" y1="0" x2=".7" y2="1">
+      <stop offset="0" stop-color="#f8edcf"/>
+      <stop offset=".5" stop-color="#ecd7a8"/>
+      <stop offset="1" stop-color="#ddbf82"/>
+    </linearGradient>
+    <radialGradient id="sun" cx=".18" cy=".12" r=".8">
+      <stop offset="0" stop-color="#fff9df" stop-opacity=".95"/>
+      <stop offset=".35" stop-color="#e6bd68" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#c78a42" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency=".65" numOctaves="4" seed="46"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="table" tableValues="0 .075"/></feComponentTransfer>
+    </filter>
+    <filter id="blur"><feGaussianBlur stdDeviation="34"/></filter>
+  </defs>
+  <rect width="1600" height="2200" fill="url(#amber)"/>
+  <rect width="1600" height="2200" fill="url(#sun)"/>
+  <circle cx="280" cy="290" r="250" fill="#f9c76b" opacity=".3" filter="url(#blur)"/>
+  <path d="M-160 1860c390-320 650-270 890-440s550-180 950-410" fill="none" stroke="#9a5b2e" stroke-opacity=".08" stroke-width="120"/>
+  <rect width="1600" height="2200" filter="url(#grain)" opacity=".55"/>
+</svg>

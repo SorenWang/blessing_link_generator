@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4eee2">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <!-- OG_META -->
+  <title>%OG_TITLE%</title>
+  <meta name="description" content="%OG_DESCRIPTION%">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/blessing.css">
+</head>
+<body data-theme="ivory" class="is-locked">
+  <div class="preview-ribbon" id="preview-ribbon" hidden>后台预览 · 此页面仅后台可见</div>
+
+  <div class="page-loader" id="page-loader" aria-live="polite">
+    <div class="loader-seal">祝</div>
+    <p>正在展开这封信</p>
+  </div>
+
+  <div class="error-screen" id="error-screen" hidden>
+    <div class="error-mark">未</div>
+    <p class="eyebrow">THIS LETTER IS NOT HERE</p>
+    <h1 id="error-title">这封信暂时找不到</h1>
+    <p id="error-message">请向发送者确认链接是否完整。</p>
+  </div>
+
+  <main id="blessing-app" hidden>
+    <section class="cover" id="cover" aria-label="祝福封面">
+      <div class="cover-grain" aria-hidden="true"></div>
+      <div class="cover-frame">
+        <header class="cover-top">
+          <span id="cover-english">A LETTER FOR YOU</span>
+          <span id="cover-date"></span>
+        </header>
+
+        <div class="cover-center">
+          <p class="cover-prelude">有一封信，写给你</p>
+          <h1 id="cover-name"></h1>
+          <p class="cover-occasion" id="cover-occasion"></p>
+          <p class="cover-title" id="cover-title"></p>
+          <button type="button" class="open-letter" id="open-letter">
+            <span class="wax-seal" aria-hidden="true">启</span>
+            <span class="open-letter-label">轻启此信</span>
+          </button>
+        </div>
+
+        <footer class="cover-bottom">
+          <span>FROM <strong id="cover-sender">一位记挂你的人</strong></span>
+          <span>BLESSING LINK · <span id="cover-year"></span></span>
+        </footer>
+      </div>
+      <div class="petal-field" id="petal-field" aria-hidden="true"></div>
+      <p class="cover-hint">点击印章，慢慢读</p>
+    </section>
+
+    <article class="letter" id="letter" aria-hidden="true">
+      <header class="letter-topline reveal">
+        <span class="letter-label" id="letter-label">A NOTE FOR YOU</span>
+        <span class="letter-rule"></span>
+        <span class="letter-index">NO. <span id="letter-index">01</span></span>
+      </header>
+
+      <section class="letter-opening reveal">
+        <p class="to-line"><span id="recipient-line"></span></p>
+        <p class="letter-lead" id="letter-lead"></p>
+      </section>
+
+      <section class="message-section reveal" id="message-section" aria-label="祝福正文">
+        <div id="message-body"></div>
+      </section>
+
+      <section class="gallery-section reveal" id="gallery-section" aria-label="照片记忆" hidden>
+        <div class="section-label"><span>OUR MOMENTS</span><span id="gallery-count"></span></div>
+        <div class="gallery-grid" id="gallery-grid"></div>
+      </section>
+
+      <section class="timeline-section reveal" id="timeline-section" aria-label="时间线" hidden>
+        <div class="section-label"><span>THE DAYS WE KEPT</span><span>时光留痕</span></div>
+        <div class="timeline" id="timeline"></div>
+      </section>
+
+      <section class="audio-section reveal" id="audio-section" aria-label="声音祝福" hidden>
+        <button type="button" class="audio-card" id="audio-toggle" aria-label="播放声音">
+          <span class="audio-play" id="audio-play-icon">▶</span>
+          <span class="audio-copy"><strong id="audio-title">一段留给你的声音</strong><span>点开，听一听</span></span>
+          <span class="audio-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+          <span class="audio-progress" id="audio-progress"></span>
+        </button>
+        <audio id="page-audio" preload="metadata"></audio>
+      </section>
+
+      <section class="closing-section reveal" id="closing-section">
+        <p class="closing-mark" aria-hidden="true">“</p>
+        <p class="closing-text" id="closing-text"></p>
+        <div class="signature">
+          <span>FROM</span>
+          <strong id="sender-name"></strong>
+        </div>
+      </section>
+
+      <footer class="letter-footer reveal">
+        <span>BLESSING LINK · <span id="footer-date"></span></span>
+        <button type="button" class="copy-letter" id="copy-letter">复制这封信的链接</button>
+      </footer>
+    </article>
+
+    <div class="end-mark" id="end-mark" aria-hidden="true">
+      <span>✳</span>
+      <p>愿这封信，被好好收藏。</p>
+    </div>
+  </main>
+
+  <noscript><div class="noscript-note">请开启 JavaScript 以阅读这封祝福。</div></noscript>
+  <script type="module" src="/blessing.js"></script>
+</body>
+</html>
+
+

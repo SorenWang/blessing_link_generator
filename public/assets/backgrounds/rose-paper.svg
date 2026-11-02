@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2200" viewBox="0 0 1600 2200">
+  <defs>
+    <linearGradient id="rosePaper" x1="0" y1="0" x2=".9" y2="1">
+      <stop offset="0" stop-color="#f5e8e2"/>
+      <stop offset=".55" stop-color="#ecd6d0"/>
+      <stop offset="1" stop-color="#f4e6df"/>
+    </linearGradient>
+    <radialGradient id="blush" cx=".05" cy=".92" r=".8">
+      <stop offset="0" stop-color="#c47d82" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#c47d82" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="rules" width="1600" height="54" patternUnits="userSpaceOnUse">
+      <path d="M0 53.5h1600" stroke="#8d3a43" stroke-opacity=".06" stroke-width="1"/>
+    </pattern>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency=".78" numOctaves="3" seed="33"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="table" tableValues="0 .065"/></feComponentTransfer>
+    </filter>
+  </defs>
+  <rect width="1600" height="2200" fill="url(#rosePaper)"/>
+  <rect width="1600" height="2200" fill="url(#blush)"/>
+  <rect width="1600" height="2200" fill="url(#rules)"/>
+  <rect width="1600" height="2200" filter="url(#grain)" opacity=".55"/>
+</svg>

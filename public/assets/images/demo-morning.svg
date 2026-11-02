@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1100" viewBox="0 0 900 1100">
+  <defs>
+    <linearGradient id="dawn" x1="0" y1="1" x2="0" y2="0"><stop stop-color="#d7865b"/><stop offset=".55" stop-color="#f1bd84"/><stop offset="1" stop-color="#a4c6c7"/></linearGradient>
+    <filter id="grain"><feTurbulence baseFrequency=".9" numOctaves="3" type="fractalNoise"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .07"/></feComponentTransfer></filter>
+  </defs>
+  <rect width="900" height="1100" fill="url(#dawn)"/>
+  <circle cx="665" cy="355" r="125" fill="#fff4d4" opacity=".75"/>
+  <path d="M0 760c180-115 330-96 475-30s285 65 425-5v375H0z" fill="#6e8f86" opacity=".55"/>
+  <path d="M0 860c220-145 380-32 540-70s220-30 360-116v426H0z" fill="#355d59" opacity=".62"/>
+  <path d="M100 0v580M300 0v650M735 0v745" stroke="#fff7e8" stroke-opacity=".25" stroke-width="8"/>
+  <rect width="900" height="1100" filter="url(#grain)"/>
+</svg>

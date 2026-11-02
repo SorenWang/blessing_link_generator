@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1100" viewBox="0 0 900 1100">
+  <defs>
+    <linearGradient id="garden" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b7cab2"/><stop offset="1" stop-color="#355348"/></linearGradient>
+    <filter id="grain"><feTurbulence baseFrequency=".8" numOctaves="3" type="fractalNoise"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .06"/></feComponentTransfer></filter>
+  </defs>
+  <rect width="900" height="1100" fill="url(#garden)"/>
+  <circle cx="200" cy="230" r="150" fill="#f8f4dd" opacity=".32"/>
+  <g fill="none" stroke="#eef1db" stroke-opacity=".55" stroke-width="5">
+    <path d="M90 1100C250 800 280 620 450 400s250-300 320-470"/>
+    <path d="M450 400c85 32 142 20 205-74M380 540c-90 6-154-38-190-145M520 300c-20-100 18-180 120-240M300 700c100 10 160-35 205-120M230 820c-80 0-135-52-155-130"/>
+  </g>
+  <g fill="#d8b57b" opacity=".8">
+    <circle cx="665" cy="325" r="12"/><circle cx="595" cy="345" r="8"/><circle cx="220" cy="405" r="10"/><circle cx="495" cy="575" r="9"/><circle cx="80" cy="690" r="7"/>
+  </g>
+  <rect width="900" height="1100" filter="url(#grain)"/>
+</svg>

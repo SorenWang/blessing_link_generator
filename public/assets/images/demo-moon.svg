@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1100" viewBox="0 0 900 1100">
+  <defs>
+    <linearGradient id="night" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#07171f"/><stop offset="1" stop-color="#173642"/></linearGradient>
+    <radialGradient id="moon"><stop stop-color="#fff5cf"/><stop offset=".65" stop-color="#dfbd77"/><stop offset="1" stop-color="#b9904e"/></radialGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="28"/></filter>
+    <filter id="grain"><feTurbulence baseFrequency=".9" numOctaves="3" type="fractalNoise"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .08"/></feComponentTransfer></filter>
+  </defs>
+  <rect width="900" height="1100" fill="url(#night)"/>
+  <circle cx="610" cy="320" r="205" fill="#e6c47f" opacity=".22" filter="url(#glow)"/>
+  <circle cx="610" cy="320" r="150" fill="url(#moon)"/>
+  <path d="M0 900c130-70 280-40 400-95s320-50 500 30v265H0z" fill="#0a1c23"/>
+  <g fill="#efdb9f">
+    <circle cx="110" cy="190" r="3"/><circle cx="250" cy="95" r="2"/><circle cx="330" cy="280" r="2.5"/><circle cx="780" cy="120" r="2"/><circle cx="740" cy="580" r="2.4"/><circle cx="130" cy="640" r="1.7"/><circle cx="470" cy="180" r="1.5"/>
+  </g>
+  <path d="M0 820c170-120 330-130 500-60s240 70 400-25" fill="none" stroke="#d7b66f" stroke-opacity=".15" stroke-width="18"/>
+  <rect width="900" height="1100" filter="url(#grain)"/>
+</svg>

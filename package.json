@@ -1,0 +1,15 @@
+{
+  "name": "blessinglink",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A configurable blessing-page studio with bulk link generation.",
+  "scripts": {
+    "dev": "node --watch server.js",
+    "start": "node server.js",
+    "test": "node --test test/content.test.mjs test/csv.test.mjs test/server.test.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
